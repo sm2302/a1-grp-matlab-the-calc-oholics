@@ -46,5 +46,5 @@ end
  pcolor(grid)
  colormap gray
 drawnow
-pause(0.1)
+pause(0.001)
 end
