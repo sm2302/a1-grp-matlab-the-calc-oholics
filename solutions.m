@@ -1,7 +1,7 @@
+% number of generations
+for m=1:100 
 
-for m=1:100
-
-
+% convert to sparse matrix to save memory
 grid=sparse(grid);
 
 grid(1,:)=0;
@@ -42,9 +42,10 @@ for i=2:n-1
   end
 end
 
-
+% display matrix into colored cells
  pcolor(grid)
  colormap gray
+ % update figures
 drawnow
 pause(0.001)
 end
