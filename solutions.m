@@ -5,47 +5,47 @@ n = 64;
 grid = round(rand(n,n));
 
 % number of generations
-for m=1:100
+for m = 1:100
 
 % convert to sparse matrix to save memory
-grid=sparse(grid);
+grid = sparse(grid);
 
 grid(1,:)=0;
 grid(n,:)=0;
-grid(:,1)=0;
-grid(:,n)=0;
-sum=zeros(n,n);
+grid(:,1) = 0;
+grid(:,n) = 0;
+sum = zeros(n,n);
 new = zeros(n,n);
 
 % cells' neighbours
-for i=2:n-1
-  for j=2:n-1
-    sum(i,j)= grid(i-1,j-1)+grid(i,j-1)+grid(i,j+1)+grid(i-1,j)+grid(i-1,j+1)+grid(i+1,j-1)+grid(i+1,j)+grid(i+1,j+1);
+for i = 2:n-1
+  for j = 2:n-1
+    sum(i,j) = grid(i-1,j-1) + grid(i,j-1) + grid(i,j+1) + grid(i-1,j) + grid(i-1,j+1) + grid(i+1,j-1) + grid(i+1,j) + grid(i+1,j+1);
   end
 end
 
-% Game's rules
-for i=2:n-1
-  for j=2:n-1
-    if grid(i,j)==1
-      if (sum(i,j)==2 | sum(i,j)==3) % any live cells with two or three live neighbours lives on to the next generation
-        new(i,j)=1;
+% Rules of Conway's Game of Life
+for i = 2:n-1
+  for j = 2:n-1
+    if grid(i,j) == 1
+      if (sum(i,j) == 2 | sum(i,j)==3) % any live cells with two or three live neighbours lives on to the next generation
+        new(i,j) = 1;
       else
-        new(i,j)=0;
+        new(i,j) = 0;
       end
     else
-      if sum(i,j)==3
-        new(i,j)=1;
+      if sum(i,j) == 3
+        new(i,j) = 1;
       else
-        new(i,j)=0;
+        new(i,j) = 0;
       end
     end
   end
 end
 
-for i=2:n-1
-  for j=2:n-1
-    grid(i,j)=new(i,j);
+for i = 2:n-1
+  for j = 2:n-1
+    grid(i,j) = new(i,j);
   end
 end
 
