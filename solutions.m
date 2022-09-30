@@ -3,7 +3,7 @@
 % size of the game, i.e  30,50,100, etc.
 n = 64;
 
-% creates a matrix of 0's and 1's with size n
+% creates a random matrix of 0's and 1's with size n
 grid = round(rand(n,n));
 
 % number of generations
@@ -23,7 +23,7 @@ grid(:,n) = 0;
 sum = zeros(n,n);
 new = zeros(n,n);
 
-% cells' neighbours
+% checking number of live neighbours
 for i = 2:n-1
   for j = 2:n-1
     sum(i,j) = grid(i-1,j-1) + grid(i,j-1) + grid(i,j+1) + grid(i-1,j) + grid(i-1,j+1) + grid(i+1,j-1) + grid(i+1,j) + grid(i+1,j+1);
@@ -51,6 +51,7 @@ for i = 2:n-1
   end
 end
 
+% update grids' matrix to next generation
 for i = 2:n-1
   for j = 2:n-1
     grid(i,j) = new(i,j);
@@ -61,7 +62,7 @@ end
  pcolor(grid)
  colormap gray
 
-% update grid
+% update grid display
 drawnow
 pause(0.001)
 end
